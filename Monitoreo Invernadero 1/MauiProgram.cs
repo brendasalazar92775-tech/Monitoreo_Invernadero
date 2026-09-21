@@ -69,7 +69,7 @@ namespace Monitoreo_Invernadero_1
         //Agregar Carrera
         public static void RegistrarCarrera()
         {
-            FirebaseClient client = new FirebaseClient("https://monitoreo-invernadero-7d43b-default-rtdb.firebaseio.com/");
+            FirebaseClient client = new FirebaseClient("--");
             var Carrera = client.Child("Carrera").OnceAsync<Carrera>();
             if (Carrera.Result.Count == 0)
             {
@@ -103,7 +103,7 @@ namespace Monitoreo_Invernadero_1
 
         public static void RegistrarTipo_flora()
         {
-            FirebaseClient client = new FirebaseClient("https://monitoreo-invernadero-7d43b-default-rtdb.firebaseio.com/");
+            FirebaseClient client = new FirebaseClient("--");
 
             var Tipo_flora = client.Child("Tipo_flora").OnceAsync<TipoFlora>();
             if (Tipo_flora.Result.Count == 0)

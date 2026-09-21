@@ -17,8 +17,8 @@ namespace Monitoreo_Invernadero_1.Services
 {
     public class FirebaseAuthService
     {
-        private const string ApiKey = "AIzaSyDhjQi-EGqWgaRysDiHlGDSADDJh0vBvqU";
-        private const string DatabaseUrl = "https://monitoreo-invernadero-7d43b-default-rtdb.firebaseio.com/";
+        private const string ApiKey = "--";
+        private const string DatabaseUrl = "--";
         private readonly FirebaseAuthProvider authProvider;
         private readonly FirebaseClient client;
         private readonly HttpClient http = new HttpClient();
