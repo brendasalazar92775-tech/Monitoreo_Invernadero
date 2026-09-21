@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Monitoreo_Invernadero_1.RegisterPage"
+             Title="RegisterPage"
+             NavigationPage.HasNavigationBar="false">
+    
+    <ScrollView>
+    <VerticalStackLayout Padding="30">
+        <Grid RowDefinitions="*, *, *" RowSpacing="10">
+                <Grid Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="200">
+                    <Label Text="Registrar Nuevo Usuario" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineHeight=".70" FontFamily="Oswald" TextColor="#2C2C2C"></Label>
+                </Grid>
+                <Grid RowDefinitions="*,*,*,*,*,*,*,*" ColumnDefinitions="*" RowSpacing="20" Grid.Row="1" Padding="10">
+                    <!-- INGRESAR NOMBRE -->
+                    <Grid Grid.Row="0" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Nombre: " FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Entry  x:Name="NombreEntry" Placeholder="Ingresa tu Nombre(s)"/>
+                        </Frame>
+                    </Grid>
+                    <!-- INGRESAR PRIMER APELLIDO -->
+                    <Grid Grid.Row="1" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10" >
+                        <Label Grid.Row="0" Grid.Column="0" Text="Apellido Paterno: " FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Entry x:Name="P_ApellidoEntry" Placeholder="Ingresa tu Primer Apellido"/>
+                        </Frame>
+                    </Grid>
+                    <!-- INGRESAR SEGUNDO APELLIDO -->
+                    <Grid Grid.Row="2" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Apellido Materno: " FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Entry x:Name="S_ApellidoEntry" Placeholder="Segundo Apellido"/>
+                        </Frame>
+                    </Grid>
+                    <!-- INGRESAR CORREO -->
+                    <Grid Grid.Row="3" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Correo Electronico: " FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Entry x:Name="EmailEntry" Placeholder="Ingresa tu Correo"/>
+                        </Frame>
+                    </Grid>
+                    <!-- INGRESAR NUMERO DE TELEFONO -->
+                    <Grid Grid.Row="4" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Numero de contacto: " FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Entry x:Name="NumeroEntry" Placeholder="Ingresa tu Numero" Keyboard="Numeric"/>
+                        </Frame>
+                    </Grid>
+                    <!-- INGRESAR CONTRASEÑA -->
+                    <Grid Grid.Row="5" Grid.Column="0" RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Contraseña:" FontFamily="Roboto" FontSize="18"/>
+                        <Label Grid.Row="1" Text="La contraseña debe tener al menos 8 caracteres, con letras y números." Opacity=".40"/>
+                        <Frame Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Padding="15,0,15,-10" HasShadow="True">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Entry x:Name="PasswordEntry" Placeholder="Ingresa una contraseña sencilla" IsPassword="True" Grid.Column="0" />
+                                <Button x:Name="TogglePasswordButton" Text="👁" FontSize="18" Clicked="TogglePasswordButton_Clicked" Grid.Column="1" BackgroundColor="Transparent"/>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+
+                    <!-- INGRESAR ROLES -->
+                    <Grid Grid.Row="7" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Selecciona tu Rol: " FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Picker
+                                ItemsSource="{Binding Roles}"
+                                ItemDisplayBinding="{Binding Nombre}"
+                                x:Name="rolesPicker"/>
+                        </Frame>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2" WidthRequest="270" RowDefinitions="*,*">
+                    <Grid Grid.Row="0" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Button Text="Registrar" x:Name="OnRegister" Clicked="OnRegisterFirebase_Clicked" Grid.Row="0" Background="#2C2C2C"/>
+                    </Grid>
+                    <Grid RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10" Grid.Row="1">
+                        <Button Text="Volver al menu" x:Name="OnMenu" Clicked="OnMenu_Clicked" Grid.Row="1" Background="#2C2C2C"/>
+                    </Grid>
+                </Grid>
+        </Grid>
+
+
+            <Label x:Name="MenssageLabel"
+                   TextColor="Red"
+               />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

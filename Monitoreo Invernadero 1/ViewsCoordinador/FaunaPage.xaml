@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Monitoreo_Invernadero_1.ViewsCoordinador.FaunaPage"
+             Title="FaunaPage"
+             NavigationPage.HasNavigationBar="False">
+    <ScrollView>
+        <VerticalStackLayout Padding="30,40,30,0">
+            <Grid RowDefinitions="*, *, *, *, *" RowSpacing="20">
+
+                <Grid Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="200">
+                    <Frame Padding="0" HasShadow="True" WidthRequest="300">
+                        <Label Text="Fauna" FontSize="30" FontAttributes="Bold" TextTransform="Uppercase"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineHeight=".70" FontFamily="Oswald" TextColor="#2C2C2C"></Label>
+
+                    </Frame>
+                </Grid>
+
+
+                <!-- AUTOCTONA -->
+                <Grid Grid.Row="1" Grid.Column="0" RowDefinitions="*,*">
+                    <Grid>
+                        <Label Grid.Row="0" Text="Autoctona" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Start"  LineHeight=".70" FontFamily="Oswald" TextColor="#2C2C2C"></Label>
+                    </Grid>
+                    <CollectionView x:Name="ListaCollection_Autoctona"
+                  ItemsSource="{Binding ListaAutoctona}"
+                  Grid.Row="1"
+                  Grid.Column="2">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+
+                                <Frame Padding="0,0,0,0" Margin="0,10,0,0">
+
+                                    <Grid ColumnDefinitions=".08*, .2*,.1*" RowDefinitions="*" HeightRequest="60">
+                                        <Button x:Name="VerAtoctona" />
+                                        <Grid Grid.Column="0" Grid.Row="0" BackgroundColor="White">
+                                            <Image Grid.RowSpan="2"
+                                                 Source="mariposa.png"
+                                                 Aspect="AspectFill"
+                                                 HeightRequest="40"
+                                                 WidthRequest="40"/>
+                                        </Grid>
+                                        <Grid Grid.Column="1" Grid.Row="0" RowDefinitions="*"  ColumnDefinitions="*" VerticalOptions="Center">
+                                            <Grid Grid.Row="0">
+                                                <Label Grid.Row="0"
+                                                     Text="{Binding Nombre}"
+                                                     FontAttributes="Bold"
+                                                     FontSize="20"/>
+                                            </Grid>
+                                        </Grid>
+                                        <Grid Grid.Column="2" RowDefinitions="*,*" ColumnDefinitions="*,*" Margin="0,0,0,10">
+                                            <Grid Grid.Row="1" Grid.Column="0" Padding="0">
+                                                <Button BackgroundColor="White" x:Name="OnEliminarFauna" Clicked="OnEliminarFauna_Clicked" CommandParameter="{Binding}"/>
+                                                <Image Source="eliminar.png" WidthRequest="25"/>
+                                            </Grid>
+                                            <Grid Grid.Row="1" Grid.Column="1" Padding="0">
+                                                <Button BackgroundColor="White" x:Name="OnEditarFauna" Clicked="OnEditarFauna_Clicked"/>
+                                                <Image Source="editar.png" WidthRequest="25"/>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Frame>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+
+                <!-- INVASORA -->
+                <Grid Grid.Row="2" Grid.Column="0" RowDefinitions="*,*">
+                    <Grid>
+                        <Label Grid.Row="1" Text="Invasora" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Start"  LineHeight=".70" FontFamily="Oswald" TextColor="#2C2C2C"></Label>
+                    </Grid>
+                    <CollectionView x:Name="ListaCollection_Invasora"
+                  ItemsSource="{Binding ListaInvasora}"
+                  Grid.Row="1"
+                  Grid.Column="2">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+
+                                <Frame Padding="0,0,0,0" Margin="0,10,0,0">
+
+                                    <Grid ColumnDefinitions=".08*, .2*,.1*" RowDefinitions="*" HeightRequest="60">
+                                        <Button x:Name="VerInvasora" />
+                                        <Grid Grid.Column="0" Grid.Row="0" BackgroundColor="White">
+                                            <Image Grid.RowSpan="2"
+                                                 Source="fauna.png"
+                                                 Aspect="AspectFill"
+                                                 HeightRequest="40"
+                                                 WidthRequest="40"/>
+                                        </Grid>
+                                        <Grid Grid.Column="1" Grid.Row="0" RowDefinitions="*"  ColumnDefinitions="*" VerticalOptions="Center">
+                                            <Grid Grid.Row="0">
+                                                <Label Grid.Row="0"
+                                                     Text="{Binding Nombre}"
+                                                     FontAttributes="Bold"
+                                                     FontSize="20"/>
+                                            </Grid>
+                                        </Grid>
+                                        <Grid Grid.Column="2" RowDefinitions="*,*" ColumnDefinitions="*,*" Margin="0,0,0,10">
+                                            <Grid Grid.Row="1" Grid.Column="0" Padding="0">
+                                                <Button BackgroundColor="White" x:Name="OnEliminarFauna" Clicked="OnEliminarFauna_Clicked" CommandParameter="{Binding}"/>
+                                                <Image Source="eliminar.png" WidthRequest="25"/>
+                                            </Grid>
+                                            <Grid Grid.Row="1" Grid.Column="1" Padding="0">
+                                                <Button BackgroundColor="White" x:Name="OnEditarFauna" Clicked="OnEditarFauna_Clicked"/>
+                                                <Image Source="editar.png" WidthRequest="25"/>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Frame>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+
+
+
+                <Grid Grid.Row="3">
+                    <Button Text="Registrar" x:Name="OnRegistrar" Clicked="OnRegistrar_Clicked"/>
+                </Grid>
+                <Grid Grid.Row="4">
+                    <Button Text="Menu" x:Name="OnMenu" Clicked="OnMenu_Clicked"/>
+                </Grid>
+
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

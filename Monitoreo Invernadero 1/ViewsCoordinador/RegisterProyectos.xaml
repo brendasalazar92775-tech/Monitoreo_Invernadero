@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Monitoreo_Invernadero_1.ViewsCoordinador.RegisterProyectos"
+             Title="RegisterProyectos"
+             NavigationPage.HasNavigationBar="False">
+    <ScrollView>
+        <VerticalStackLayout Padding="30">
+            <Grid RowDefinitions="*, *, *" RowSpacing="10">
+                <Grid Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="200">
+                    <Label Text="Registrar Nuevos Proyectos" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineHeight=".70" FontFamily="Oswald" TextColor="#2C2C2C"></Label>
+                </Grid>
+                <Grid RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="*" RowSpacing="20" Grid.Row="1" Padding="10">
+
+                    <Grid Grid.Row="0" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Nombre del proyectos: " FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Entry  x:Name="NombreEntry" Placeholder="Ingresa el nombre de tu proyecto"/>
+                        </Frame>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10" >
+                        <Label Grid.Row="0" Grid.Column="0" Text="Descripción:" FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Editor x:Name="DescripcionEntry" Placeholder="Describe tu proyecto de forma breve " HeightRequest="90"/>
+                        </Frame>
+                    </Grid>
+
+
+                    <Grid Grid.Row="2" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Fecha de Inicio del proyecto:" FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <DatePicker x:Name="f_InicioDatePicker"/>
+                        </Frame>
+                    </Grid>
+
+                    <Grid Grid.Row="4" Grid.Column="0" RowDefinitions="*" ColumnDefinitions="*,*">
+                        <Grid RowDefinitions="*,*" Grid.Row="0" Grid.Column="0">
+                            <Label Grid.Row="1" Grid.Column="0" Text="(Si no tienes la informacion deja el espacio en blanco)" Opacity=".4" FontFamily="Roboto" FontSize="11"/>
+                            <Frame Grid.Row="2" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True" >
+                                <DatePicker x:Name="f_TerminoDatePicker"/>
+                            </Frame>
+                        </Grid>
+                        <Grid Grid.Row="0" Grid.Column="1">
+                            <CheckBox x:Name="MiCheckBox" CheckedChanged="MiCheckBox_CheckedChanged" />
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Row="5" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Selecciona el Estado del proyecto: " FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Picker
+                                ItemsSource="{Binding EstadoProyecto}"
+                                ItemDisplayBinding="{Binding Nombre_Estado}"
+                                x:Name="estadoPicker"/>
+
+                        </Frame>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2" WidthRequest="270" RowDefinitions="*,*">
+                    <Grid Grid.Row="0" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Button Text="Registrar Proyecto" x:Name="OnRegister" Clicked="OnRegister_Clicked" Grid.Row="0" Background="#2C2C2C"/>
+                    </Grid>
+                    <Grid RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10" Grid.Row="1">
+                        <Button Text="Volver al menu" x:Name="OnMenu" Clicked="OnMenu_Clicked" Grid.Row="1" Background="#2C2C2C"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+
+            <Label x:Name="MenssageLabel"
+               TextColor="Red"
+               />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

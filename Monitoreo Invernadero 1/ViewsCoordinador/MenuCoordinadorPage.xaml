@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Monitoreo_Invernadero_1.ViewsCoordinador.MenuCoordinadorPage"
+             Title="Menú"
+             NavigationPage.HasNavigationBar="false"
+             >
+           <ScrollView>
+    <Grid RowDefinitions=".30*, .75*,.1*,.1*">
+        <Grid Grid.Row="0"
+              Padding="0,50,0,0">
+            <VerticalStackLayout VerticalOptions="Start" HorizontalOptions="Start" Padding="20">
+                <Label Text="Coordinación"
+                       TextColor="#16162E"
+                       FontFamily="OswaldB"
+                       FontAttributes="Bold"
+                       FontSize="40"
+                       HorizontalOptions="Start"/>
+
+                <Label Text="Administración general del invernadero"
+                       TextColor="#16162E"
+                       FontFamily="Roboto"
+                       FontSize="18"
+                       HorizontalTextAlignment="Start"
+                       WidthRequest="200"
+                       HorizontalOptions="Start"/>
+            </VerticalStackLayout>
+        </Grid>
+
+        <Grid Grid.Row="1" Padding="0">
+            <!-- Scrollable content -->
+ 
+                <VerticalStackLayout Spacing="15" 
+                                     Padding="25,30,25,30">
+                    <Grid RowDefinitions="*,*" ColumnDefinitions="*,*" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" ColumnSpacing="20" RowSpacing="20" Padding="0">
+
+                        <!-- BOTON 1  -->
+                        <Frame Grid.Row="0" Grid.Column="0" Padding="40" HasShadow="True">
+                            <Grid VerticalOptions="Center" HorizontalOptions="Center" >
+                                <Button BackgroundColor="White"
+                                        Clicked="OnRegister_Clicked"
+                                        x:Name="OnRegister"/>
+                                <Grid  RowDefinitions="*,*,*" ColumnDefinitions="*" Grid.Row="1" Grid.Column="1" >
+                                    <Image Source="cuenta.png" Grid.Row="0" HeightRequest="60"/>
+                                    <Label Text="Usuarios" Grid.Row="1" FontAttributes="Bold"/>
+                                </Grid>
+
+                            </Grid>
+                        </Frame>
+
+                        <!-- BOTON 2  -->
+                        <Frame Grid.Row="0" Grid.Column="1" Padding="40" HasShadow="True">
+                            <Grid VerticalOptions="Center" HorizontalOptions="Center" >
+                                <Button BackgroundColor="White" 
+                                        x:Name="OnMonitoreo"
+                                        Clicked="OnMonitoreo_Clicked"/>
+                                <Grid  RowDefinitions="*,*,*" ColumnDefinitions="*" Grid.Row="1" Grid.Column="1" >
+                                    <Image Source="monitoreo.png" Grid.Row="0" HeightRequest="60"/>
+                                    <Label Text="Monitoreo" Grid.Row="1" FontAttributes="Bold"/>
+                                </Grid>
+
+                            </Grid>
+                        </Frame>
+
+
+
+                        <!-- BOTON 3  -->
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="30" HasShadow="True">
+                            <Grid VerticalOptions="Center" HorizontalOptions="Center" >
+                                <Button BackgroundColor="White" x:Name="OnFloraYFauna" Clicked="OnFloraYFauna_Clicked" />
+                                <Grid  RowDefinitions="*,*,*" ColumnDefinitions="*" Grid.Row="1" Grid.Column="1" >
+                                    <Image Source="flor.png" Grid.Row="0" HeightRequest="60"/>
+                                    <Label Text="Flora y Fauna" Grid.Row="1" FontAttributes="Bold"/>
+                                </Grid>
+
+                            </Grid>
+                        </Frame>
+
+                        <!-- BOTON 4  -->
+                        <Frame Grid.Row="1" Grid.Column="1" Padding="40" HasShadow="True">
+                            <Grid VerticalOptions="Center" HorizontalOptions="Center" >
+                                <Button BackgroundColor="White" x:Name="OnProyectos" Clicked="OnProyectos_Clicked"/>
+                                <Grid  RowDefinitions="*,*,*" ColumnDefinitions="*" Grid.Row="1" Grid.Column="1" >
+                                    <Image Source="proyecto.png" Grid.Row="0" HeightRequest="60"/>
+                                    <Label Text="Proyectos" Grid.Row="1" FontAttributes="Bold"/>
+                                </Grid>
+
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </VerticalStackLayout>
+
+        </Grid>
+        <Grid VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="300" Grid.Row="2" Margin="0,-30,0,0" >
+            <Button Text="Cerrar Sesion"
+                    BackgroundColor="#16162E"
+                    FontAttributes="Bold"
+                    FontFamily="Roboto"
+                    x:Name="Login_btn"
+                    Clicked="Login_btn_Clicked"/>
+        </Grid>
+        <Grid VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="180" Grid.Row="3" >
+
+            <Grid >
+                <Label Text="Universidad Politecnica de Tecamac"
+                   FontSize="20"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   LineHeight=".80"
+                   FontFamily="Roboto"
+                   Grid.Row="1"
+                       Opacity=".30"
+                   TextColor="Black"
+   />
+            </Grid>
+        </Grid>
+    </Grid>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Monitoreo_Invernadero_1.ViewsCoordinador.ProyectosPage"
+             Title="Proyectos"
+             NavigationPage.HasNavigationBar="False">
+    <ScrollView>
+        <VerticalStackLayout Padding="30,40,30,0">
+            <Grid RowDefinitions="*, *, *, *" RowSpacing="20">
+
+                <Grid Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="200">
+                    <Label Text="Proyectos" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineHeight=".70" FontFamily="Oswald" TextColor="#2C2C2C"></Label>
+                </Grid>
+                <Grid RowDefinitions="*" ColumnDefinitions=".7*,.3*" Grid.Row="1" ColumnSpacing="10">
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <SearchBar Placeholder="Buscar..."
+                       x:Name="filtroEntry"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       TextColor="White" PlaceholderColor="Black"
+                                   TextChanged="filtroEntry_TextChanged"/>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <Button Text="Nuevo"
+                        x:Name="nuevoUs_btn"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Clicked="nuevoUs_btn_Clicked"
+                        BackgroundColor="#2C2C2C"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="0">
+                    <CollectionView x:Name="ListaCollection"
+                      ItemsSource="{Binding Lista}"
+                      Grid.Row="1"
+                      Grid.Column="2">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Padding="0,0,0,0" Margin="0,10,0,0">
+
+                                    <Grid ColumnDefinitions=".1*, .2*,.1*" RowDefinitions="*" HeightRequest="60">
+                                        <Button x:Name="VerProyecto" Clicked="VerProyecto_Clicked" />
+                                        <Grid Grid.Column="0" Grid.Row="0" BackgroundColor="White">
+                                            <Image Grid.RowSpan="2"
+                                             Source="proyecto.png"
+                                             Aspect="AspectFill"
+                                             HeightRequest="40"
+                                             WidthRequest="40"/>
+                                        </Grid>
+                                        <Grid Grid.Column="1" Grid.Row="0" RowDefinitions="*,*"  ColumnDefinitions="*" VerticalOptions="Center">
+                                            <Grid Grid.Row="0">
+                                                    <Label Grid.Row="0"
+                                                 Text="{Binding Nombre}"
+                                                 FontAttributes="Bold"
+                                                 FontSize="20"/>
+                                            </Grid>
+                                            <Grid Grid.Row="1" RowDefinitions="*,*">
+                                                <Label Grid.Row="0"
+                                                    Text="Estado: "
+                                                    FontAttributes="Italic"/>
+                                                <Label Grid.Row="1"
+                                                    Text="{Binding Estado.Nombre_Estado}"
+                                                    FontAttributes="Italic" />
+                                            </Grid>
+                                        </Grid>
+                                        <Grid Grid.Column="2" RowDefinitions="*,*" ColumnDefinitions="*,*" Margin="0,0,0,10">
+                                            <Grid Grid.Row="1" Grid.Column="0" Padding="0">
+                                                <Button BackgroundColor="White" x:Name="OnEliminarProyecto" Clicked="OnEliminarProyecto_Clicked" CommandParameter="{Binding}"/>
+                                                <Image Source="eliminar.png" WidthRequest="25"/>
+                                            </Grid>
+                                            <Grid Grid.Row="1" Grid.Column="1" Padding="0">
+                                                <Button BackgroundColor="White" x:Name="OnEditarProyecto" Clicked="OnEditarProyecto_Clicked"/>
+                                                <Image Source="editar.png" WidthRequest="25"/>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Frame>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+
+
+                    </CollectionView>
+
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid RowDefinitions="*" ColumnDefinitions="*" RowSpacing="10">
+                        <Button Text="Volver al menu" x:Name="OnMenu" Clicked="OnMenu_Clicked" Grid.Row="0" Background="#2C2C2C"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+
+            <Label x:Name="MenssageLabel"
+       TextColor="Red"
+       />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

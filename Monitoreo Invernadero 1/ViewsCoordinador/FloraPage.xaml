@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Monitoreo_Invernadero_1.ViewsCoordinador.FloraPage"
+             Title="FloraPage"
+             NavigationPage.HasNavigationBar="False">
+     <ScrollView>
+        <VerticalStackLayout Padding="30,40,30,0">
+            <Grid RowDefinitions="*, *, *, *, *, *, *, *, *" RowSpacing="20">
+
+                <Grid Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="200">
+                    <Frame Padding="0" HasShadow="True" WidthRequest="300">
+                        <Label Text="Flora" FontSize="30" FontAttributes="Bold" TextTransform="Uppercase"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineHeight=".70" FontFamily="Oswald" TextColor="#2C2C2C"></Label>
+
+                    </Frame>
+                </Grid>
+                
+                
+                <!-- ARBOLES -->
+                <Grid Grid.Row="1" Grid.Column="0" RowDefinitions="*,*">
+                    <Grid>
+                        <Label Grid.Row="0" Text="Arboles" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Start"  LineHeight=".70" FontFamily="Oswald" TextColor="#2C2C2C"></Label>
+                    </Grid>
+                    <CollectionView x:Name="ListaCollection_Arboles"
+                       ItemsSource="{Binding ListaArbol}"
+                       Grid.Row="1"
+                       Grid.Column="2">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+
+                                <Frame Padding="0,0,0,0" Margin="0,10,0,0">
+
+                                    <Grid ColumnDefinitions=".08*, .2*,.1*" RowDefinitions="*" HeightRequest="60">
+                                        <Button x:Name="VerFlora" />
+                                        <Grid Grid.Column="0" Grid.Row="0" BackgroundColor="White">
+                                            <Image Grid.RowSpan="2"
+                                      Source="arbol.png"
+                                      Aspect="AspectFill"
+                                      HeightRequest="40"
+                                      WidthRequest="40"/>
+                                        </Grid>
+                                        <Grid Grid.Column="1" Grid.Row="0" RowDefinitions="*,*"  ColumnDefinitions="*" VerticalOptions="Center">
+                                            <Grid Grid.Row="0">
+                                                <Label Grid.Row="0"
+                                          Text="{Binding Nombre}"
+                                          FontAttributes="Bold"
+                                          FontSize="20"/>
+                                            </Grid>
+                                            <Grid Grid.Row="1" ColumnDefinitions="*,*" ColumnSpacing="-40">
+                                                <Label Grid.Column="0"
+                                             Text="Cantidad: "
+                                             FontAttributes="Italic"/>
+                                                <Label Grid.Column="1"
+                                             Text="{Binding Cantidad}"
+                                             FontAttributes="Italic" />
+                                            </Grid>
+                                        </Grid>
+                                        <Grid Grid.Column="2" RowDefinitions="*,*" ColumnDefinitions="*,*" Margin="0,0,0,10">
+                                            <Grid Grid.Row="1" Grid.Column="0" Padding="0">
+                                                <Button BackgroundColor="White" x:Name="OnEliminarFlora" Clicked="OnEliminarFlora_Clicked" CommandParameter="{Binding}"/>
+                                                <Image Source="eliminar.png" WidthRequest="25"/>
+                                            </Grid>
+                                            <Grid Grid.Row="1" Grid.Column="1" Padding="0">
+                                                <Button BackgroundColor="White" x:Name="OnEditarFlora" Clicked="OnEditarFlora_Clicked"/>
+                                                <Image Source="editar.png" WidthRequest="25"/>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Frame>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+
+                <!-- HORTALIZA -->
+                <Grid Grid.Row="2" Grid.Column="0" RowDefinitions="*,*">
+                    <Grid>
+                        <Label Grid.Row="0" Text="Hortalizas" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Start"  LineHeight=".70" FontFamily="Oswald" TextColor="#2C2C2C"></Label>
+                    </Grid>
+                    <CollectionView x:Name="ListaCollection_Hortaliza"
+                       ItemsSource="{Binding ListaHortaliza}"
+                       Grid.Row="1"
+                       Grid.Column="2">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+
+                                <Frame Padding="0,0,0,0" Margin="0,10,0,0">
+
+                                    <Grid ColumnDefinitions=".08*, .2*,.1*" RowDefinitions="*" HeightRequest="60">
+                                        <Button x:Name="VerFlora" />
+                                        <Grid Grid.Column="0" Grid.Row="0" BackgroundColor="White">
+                                            <Image Grid.RowSpan="2"
+                                      Source="lechuga.png"
+                                      Aspect="AspectFill"
+                                      HeightRequest="40"
+                                      WidthRequest="40"/>
+                                        </Grid>
+                                        <Grid Grid.Column="1" Grid.Row="0" RowDefinitions="*,*"  ColumnDefinitions="*" VerticalOptions="Center">
+                                            <Grid Grid.Row="0">
+                                                <Label Grid.Row="0"
+                                          Text="{Binding Nombre}"
+                                          FontAttributes="Bold"
+                                          FontSize="20"/>
+                                            </Grid>
+                                            <Grid Grid.Row="1" ColumnDefinitions="*,*" ColumnSpacing="-40">
+                                                <Label Grid.Column="0"
+                                             Text="Cantidad: "
+                                             FontAttributes="Italic"/>
+                                                <Label Grid.Column="1"
+                                             Text="{Binding Cantidad}"
+                                             FontAttributes="Italic" />
+                                            </Grid>
+                                        </Grid>
+                                        <Grid Grid.Column="2" RowDefinitions="*,*" ColumnDefinitions="*,*" Margin="0,0,0,10">
+                                            <Grid Grid.Row="1" Grid.Column="0" Padding="0">
+                                                <Button BackgroundColor="White" x:Name="OnEliminarFlora" Clicked="OnEliminarFlora_Clicked" CommandParameter="{Binding}"/>
+                                                <Image Source="eliminar.png" WidthRequest="25"/>
+                                            </Grid>
+                                            <Grid Grid.Row="1" Grid.Column="1" Padding="0">
+                                                <Button BackgroundColor="White" x:Name="OnEditarFlora" Clicked="OnEditarFlora_Clicked"/>
+                                                <Image Source="editar.png" WidthRequest="25"/>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Frame>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+
+                <!-- FRUTA -->
+                <Grid Grid.Row="3" Grid.Column="0" RowDefinitions="*,*">
+                    <Grid>
+                        <Label Grid.Row="0" Text="Frutas" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Start"  LineHeight=".70" FontFamily="Oswald" TextColor="#2C2C2C"></Label>
+                    </Grid>
+                    <CollectionView x:Name="ListaCollection_Fruta"
+                       ItemsSource="{Binding ListaFruta}"
+                       Grid.Row="1"
+                       Grid.Column="2">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+
+                                <Frame Padding="0,0,0,0" Margin="0,10,0,0">
+
+                                    <Grid ColumnDefinitions=".08*, .2*,.1*" RowDefinitions="*" HeightRequest="60">
+                                        <Button x:Name="VerFlora" />
+                                        <Grid Grid.Column="0" Grid.Row="0" BackgroundColor="White">
+                                            <Image Grid.RowSpan="2"
+                                      Source="frutas.png"
+                                      Aspect="AspectFill"
+                                      HeightRequest="40"
+                                      WidthRequest="40"/>
+                                        </Grid>
+                                        <Grid Grid.Column="1" Grid.Row="0" RowDefinitions="*,*"  ColumnDefinitions="*" VerticalOptions="Center">
+                                            <Grid Grid.Row="0">
+                                                <Label Grid.Row="0"
+                                          Text="{Binding Nombre}"
+                                          FontAttributes="Bold"
+                                          FontSize="20"/>
+                                            </Grid>
+                                            <Grid Grid.Row="1" ColumnDefinitions="*,*" ColumnSpacing="-40">
+                                                <Label Grid.Column="0"
+                                             Text="Cantidad: "
+                                             FontAttributes="Italic"/>
+                                                <Label Grid.Column="1"
+                                             Text="{Binding Cantidad}"
+                                             FontAttributes="Italic" />
+                                            </Grid>
+                                        </Grid>
+                                        <Grid Grid.Column="2" RowDefinitions="*,*" ColumnDefinitions="*,*" Margin="0,0,0,10">
+                                            <Grid Grid.Row="1" Grid.Column="0" Padding="0">
+                                                <Button BackgroundColor="White" x:Name="OnEliminarFlora" Clicked="OnEliminarFlora_Clicked" CommandParameter="{Binding}"/>
+                                                <Image Source="eliminar.png" WidthRequest="25"/>
+                                            </Grid>
+                                            <Grid Grid.Row="1" Grid.Column="1" Padding="0">
+                                                <Button BackgroundColor="White" x:Name="OnEditarFlora" Clicked="OnEditarFlora_Clicked"/>
+                                                <Image Source="editar.png" WidthRequest="25"/>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Frame>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+
+                <!-- CHILES -->
+                <Grid Grid.Row="4" Grid.Column="0" RowDefinitions="*,*">
+                    <Grid>
+                        <Label Grid.Row="0" Text="Chiles" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Start"  LineHeight=".70" FontFamily="Oswald" TextColor="#2C2C2C"></Label>
+                    </Grid>
+                    <CollectionView x:Name="ListaCollection_Chiles"
+                       ItemsSource="{Binding ListaChiles}"
+                       Grid.Row="1"
+                       Grid.Column="2">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+
+                                <Frame Padding="0,0,0,0" Margin="0,10,0,0">
+
+                                    <Grid ColumnDefinitions=".08*, .2*,.1*" RowDefinitions="*" HeightRequest="60">
+                                        <Button x:Name="VerFlora" />
+                                        <Grid Grid.Column="0" Grid.Row="0" BackgroundColor="White">
+                                            <Image Grid.RowSpan="2"
+                                      Source="chile.png"
+                                      Aspect="AspectFill"
+                                      HeightRequest="40"
+                                      WidthRequest="40"/>
+                                        </Grid>
+                                        <Grid Grid.Column="1" Grid.Row="0" RowDefinitions="*,*"  ColumnDefinitions="*" VerticalOptions="Center">
+                                            <Grid Grid.Row="0">
+                                                <Label Grid.Row="0"
+                                          Text="{Binding Nombre}"
+                                          FontAttributes="Bold"
+                                          FontSize="20"/>
+                                            </Grid>
+                                            <Grid Grid.Row="1" ColumnDefinitions="*,*" ColumnSpacing="-40">
+                                                <Label Grid.Column="0"
+                                             Text="Cantidad: "
+                                             FontAttributes="Italic"/>
+                                                <Label Grid.Column="1"
+                                             Text="{Binding Cantidad}"
+                                             FontAttributes="Italic" />
+                                            </Grid>
+                                        </Grid>
+                                        <Grid Grid.Column="2" RowDefinitions="*,*" ColumnDefinitions="*,*" Margin="0,0,0,10">
+                                            <Grid Grid.Row="1" Grid.Column="0" Padding="0">
+                                                <Button BackgroundColor="White" x:Name="OnEliminarFlora" Clicked="OnEliminarFlora_Clicked" CommandParameter="{Binding}"/>
+                                                <Image Source="eliminar.png" WidthRequest="25"/>
+                                            </Grid>
+                                            <Grid Grid.Row="1" Grid.Column="1" Padding="0">
+                                                <Button BackgroundColor="White" x:Name="OnEditarFlora" Clicked="OnEditarFlora_Clicked"/>
+                                                <Image Source="editar.png" WidthRequest="25"/>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Frame>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+
+                <!-- Cultivo -->
+                <Grid Grid.Row="5" Grid.Column="0" RowDefinitions="*,*">
+                    <Grid>
+                        <Label Grid.Row="0" Text="Cultivo" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Start"  LineHeight=".70" FontFamily="Oswald" TextColor="#2C2C2C"></Label>
+                    </Grid>
+                    <CollectionView x:Name="ListaCollection_Cultivo"
+                       ItemsSource="{Binding ListaCultivos}"
+                       Grid.Row="1"
+                       Grid.Column="2">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+
+                                <Frame Padding="0,0,0,0" Margin="0,10,0,0">
+
+                                    <Grid ColumnDefinitions=".08*, .2*,.1*" RowDefinitions="*" HeightRequest="60">
+                                        <Button x:Name="VerFlora" />
+                                        <Grid Grid.Column="0" Grid.Row="0" BackgroundColor="White">
+                                            <Image Grid.RowSpan="2"
+                                      Source="flora.png"
+                                      Aspect="AspectFill"
+                                      HeightRequest="40"
+                                      WidthRequest="40"/>
+                                        </Grid>
+                                        <Grid Grid.Column="1" Grid.Row="0" RowDefinitions="*,*"  ColumnDefinitions="*" VerticalOptions="Center">
+                                            <Grid Grid.Row="0">
+                                                <Label Grid.Row="0"
+                                          Text="{Binding Nombre}"
+                                          FontAttributes="Bold"
+                                          FontSize="20"/>
+                                            </Grid>
+                                            <Grid Grid.Row="1" ColumnDefinitions="*,*" ColumnSpacing="-40">
+                                                <Label Grid.Column="0"
+                                             Text="Cantidad: "
+                                             FontAttributes="Italic"/>
+                                                <Label Grid.Column="1"
+                                             Text="{Binding Cantidad}"
+                                             FontAttributes="Italic" />
+                                            </Grid>
+                                        </Grid>
+                                        <Grid Grid.Column="2" RowDefinitions="*,*" ColumnDefinitions="*,*" Margin="0,0,0,10">
+                                            <Grid Grid.Row="1" Grid.Column="0" Padding="0">
+                                                <Button BackgroundColor="White" x:Name="OnEliminarFlora" Clicked="OnEliminarFlora_Clicked" CommandParameter="{Binding}"/>
+                                                <Image Source="eliminar.png" WidthRequest="25"/>
+                                            </Grid>
+                                            <Grid Grid.Row="1" Grid.Column="1" Padding="0">
+                                                <Button BackgroundColor="White" x:Name="OnEditarFlora" Clicked="OnEditarFlora_Clicked"/>
+                                                <Image Source="editar.png" WidthRequest="25"/>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Frame>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+
+                <Grid Grid.Row="6">
+                    <Button Text="Registrar" Clicked="nuevaFl_btn_Clicked"/>
+                </Grid>
+                <Grid Grid.Row="7">
+                    <Button Text="Menu" Clicked="OnMenu_Clicked"/>
+                </Grid>
+
+            </Grid>
+        </VerticalStackLayout>
+     </ScrollView>
+</ContentPage>

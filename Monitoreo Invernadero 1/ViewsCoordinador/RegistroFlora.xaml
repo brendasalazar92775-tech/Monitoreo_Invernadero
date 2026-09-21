@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Monitoreo_Invernadero_1.ViewsCoordinador.RegistroFlora"
+             Title="RegistroFlora"
+             NavigationPage.HasNavigationBar="False">
+    <ScrollView>
+        <VerticalStackLayout Padding="30">
+            <Grid RowDefinitions="*, *, *" RowSpacing="10">
+                <Grid Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="200">
+                    <Label Text="Registrar Nueva Flora" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineHeight=".70" FontFamily="Oswald" TextColor="#2C2C2C"></Label>
+                </Grid>
+                <Grid RowDefinitions="*,*,*,*,*,*,*,*,*,*" ColumnDefinitions="*" RowSpacing="20" Grid.Row="1" Padding="10">
+                    <!-- INGRESAR NOMBRE -->
+                    <Grid Grid.Row="0" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Nombre: " FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Entry  x:Name="NombreEntry" Placeholder="Ingresa su Nombre Comun"/>
+                        </Frame>
+                    </Grid>
+                    <!-- INGRESAR NOMBRE CIENTIFICO -->
+                    <Grid Grid.Row="1" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10" >
+                        <Label Grid.Row="0" Grid.Column="0" Text="Nombre Cientifico" FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Entry x:Name="NombreCientificoEntry" Placeholder="Ingresa su Nombre Cientifico"/>
+                        </Frame>
+                    </Grid>
+                    <!-- INGRESAR DESCRIPCION -->
+                    <Grid Grid.Row="2" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Descripcion de la planta " FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Editor x:Name="DescripcionEntry" Placeholder="Descripcion" HeightRequest="90"/>
+                        </Frame>
+                    </Grid>
+                    <!-- INGRESAR Temperatura Adecuada -->
+                    <Grid Grid.Row="3" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Temperatura Adecuada" FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Entry x:Name="TemEntry" Placeholder="Temperatura Adecuada"/>
+                        </Frame>
+                    </Grid>
+                    <!-- INGRESAR Humedad Adecuada  -->
+                    <Grid Grid.Row="4" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Humedad Adecuada" FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Entry x:Name="HumEntry" Placeholder="Humedad Adecuada"/>
+                        </Frame>
+                    </Grid>
+
+                    <!-- INGRESAR CANTIDAD -->
+                    <Grid Grid.Row="5" Grid.Column="0" RowDefinitions="*,*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Cantidad" FontFamily="Roboto" FontSize="18"/>
+
+                        <!-- Label que muestra el valor actual -->
+                        <Label Grid.Row="1" Grid.Column="0" 
+                            Text="{Binding Source={x:Reference CantidadSlider}, Path=Value, StringFormat='{0:F0}'}"
+                            HorizontalOptions="End"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                               Margin="0,0,20,0"/>
+                        <Frame Grid.Row="2" Grid.Column="0" Padding="6" Margin="0,0,0,0" HasShadow="True">
+                            <Slider Minimum="0" Maximum="50" x:Name="CantidadSlider" />
+                        </Frame>
+                    </Grid>
+
+                    <!-- INGRESAR Tipo de Flora-->
+                    <Grid Grid.Row="6" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="0">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Selecciona el tipo de flora: " FontFamily="Roboto" FontSize="18"/>
+                        <CollectionView Grid.Row="1"  ItemsSource="{Binding TipoFlora}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Orientation="Horizontal" Padding="5" >
+                                        <Grid ColumnDefinitions=".2*, *" WidthRequest="250" Margin="0,10,0,0" >
+                                            <Grid Grid.Column="0">
+                                                <CheckBox Color="Black" IsChecked="{Binding IsSelect}" />
+                                            </Grid>
+                                            <Grid Grid.Column="1" RowDefinitions="*,*" >
+                                                <Label Grid.Row="0" Text="{Binding Nombre}" VerticalOptions="Center"  FontFamily="Roboto" FontSize="18"/>
+                                                <Label Grid.Row="1" Text="{Binding Descripcion}" VerticalOptions="Center" Opacity=".40"/>
+                                            </Grid>
+                                        </Grid>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+
+                    <!-- INGRESAR Ubicacion -->
+                    <Grid Grid.Row="7" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Selecciona la Ubicacion: " FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Picker
+                             ItemsSource="{Binding Ubicacion}"
+                             ItemDisplayBinding="{Binding Nombre}"
+                             x:Name="UbicacionPicker"/>
+                        </Frame>
+                    </Grid>
+
+                    <!-- INGRESAR Ubicacion -->
+                    <Grid Grid.Row="8" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Selecciona el Estado de crecimiento: " FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            
+                            <Picker
+                             ItemsSource="{Binding Estados_crecimiento}"
+                             ItemDisplayBinding="{Binding Nombre}"
+                             x:Name="CrecimientoPicker"/>
+                        </Frame>
+                    </Grid>
+
+                    <!-- INGRESAR Funcion(es) -->
+                    <Grid Grid.Row="9" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="0">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Selecciona las Funciones : " FontFamily="Roboto" FontSize="18"/>
+                        <CollectionView Grid.Row="1"  ItemsSource="{Binding Funcion}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Orientation="Horizontal" Padding="5" >
+                                        <Grid ColumnDefinitions=".2*, *" WidthRequest="250" Margin="0,10,0,0" >
+                                            <Grid Grid.Column="0">
+                                                <CheckBox Color="Black" IsChecked="{Binding IsSelect}" />
+                                            </Grid>
+                                            <Grid Grid.Column="1" RowDefinitions="*,*" >
+                                                <Label Grid.Row="0" Text="{Binding Nombre}" VerticalOptions="Center"  FontFamily="Roboto" FontSize="18"/>
+                                                <Label Grid.Row="1" Text="{Binding Descripcion}" VerticalOptions="Center" Opacity=".40"/>
+                                            </Grid>
+                                        </Grid>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+
+                </Grid>
+                
+                <Grid Grid.Row="2" WidthRequest="270" RowDefinitions="*,*" Margin="20">
+                    <Grid Grid.Row="0" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Button Text="Registrar" x:Name="OnRegister" Clicked="OnRegister_Clicked" Grid.Row="0" Background="#2C2C2C"/>
+                    </Grid>
+                    <Grid RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10" Grid.Row="1">
+                        <Button Text="Volver al menu" x:Name="OnVolver" Clicked="OnVolver_Clicked" Grid.Row="1" Background="#2C2C2C"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+
+            <Label x:Name="MenssageLabel"
+            TextColor="Red"
+        />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

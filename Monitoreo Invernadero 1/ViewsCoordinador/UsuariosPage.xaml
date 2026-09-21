@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Monitoreo_Invernadero_1.ViewsCoordinador.UsuariosPage"
+             Title="Usuarios"
+             NavigationPage.HasNavigationBar="False">
+    <ScrollView>
+        <VerticalStackLayout Padding="30,40,30,0">
+            <Grid RowDefinitions="*, *, *, *" RowSpacing="20">
+
+                <Grid Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="200">
+                    <Label Text="Usuarios" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineHeight=".70" FontFamily="Oswald" TextColor="#2C2C2C"></Label>
+                </Grid>
+                <Grid RowDefinitions="*" ColumnDefinitions=".7*,.3*" Grid.Row="1" ColumnSpacing="10">
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <Frame Padding="0">
+                            <SearchBar Placeholder="Buscar..."
+                               x:Name="filtroEntry" 
+                               Grid.Row="0"
+                               Grid.Column="0"
+                               TextChanged="filtroEntry_TextChanged" TextColor="Black" PlaceholderColor="Black"
+                                       Margin="0,0,0,-2"/>
+                            
+                        </Frame>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <Button Text="Nuevo"
+                            x:Name="nuevoUs_btn"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Clicked="nuevoUs_btn_Clicked"
+                                 Background="#2C2C2C"/>
+                    </Grid>
+                </Grid>
+                <Grid VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="2" RowDefinitions="*,*">
+                    <Label Text="Da clic en el ícono para acceder a la información del usuario." Opacity=".40" Margin="0,0,0,-14"/>
+                    <CollectionView x:Name="ListaCollection"
+                        ItemsSource="{Binding Lista}"
+                        Grid.Row="1"
+                        Grid.Column="2">
+                        
+                        <CollectionView.ItemTemplate>
+                            
+                            <DataTemplate>
+                                <Frame Padding="5,3,0,3" Margin="0,15,0,0">
+                                    <Grid ColumnSpacing="10" ColumnDefinitions=".3*, *,.4*" RowDefinitions="*" >
+                                        <Button x:Name="VerUusuario" Clicked="VerUusuario_Clicked" Background="#F2F2F2"/>
+                                        <Grid Grid.Column="0" Grid.Row="0">
+                                            <Image Grid.RowSpan="2"
+                                             Source="user.png"
+                                             Aspect="AspectFill"
+                                             HeightRequest="40"
+                                             WidthRequest="40"/>
+                                        </Grid>
+
+                                        <Grid Grid.Column="1" Grid.Row="1" RowDefinitions="*,*" ColumnDefinitions="*" >
+                                            
+                                            <Label Grid.Row="0" 
+                                               Text="{Binding NombreCompeto}"
+                                               FontAttributes="Bold"
+                                               FontSize="18"/>
+                                            <Label Grid.Row="1"
+                                               Text="{Binding Roles.Nombre}"/>
+                                        </Grid>
+                                        <Grid Grid.Column="2" RowDefinitions="*,*" ColumnDefinitions="*,*" RowSpacing="5" Padding="10,0,10,0" ColumnSpacing="10">
+                                            <Grid Grid.Row="1" Grid.Column="1">
+                                                <Button BackgroundColor="White" x:Name="OnEliminarUsuario" Clicked="OnEliminarUsuario_Clicked" CommandParameter="{Binding}"/>
+                                                <Image Source="eliminar.png" WidthRequest="25"/>
+                                            </Grid>
+                                            <Grid Grid.Row="1" >
+                                                <Button BackgroundColor="White" x:Name="OnEditarUsuario" Clicked="OnEditarUsuario_Clicked"/>
+                                                <Image Source="editar.png" WidthRequest="25"/>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>                                    
+                                </Frame>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+
+
+                    </CollectionView>
+
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid RowDefinitions="*" ColumnDefinitions="*" RowSpacing="10">
+                        <Button Text="Volver al menu" x:Name="OnMenu" Clicked="OnMenu_Clicked" Grid.Row="0" Background="#2C2C2C"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+
+            <Label x:Name="MenssageLabel"
+           TextColor="Red"
+           />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

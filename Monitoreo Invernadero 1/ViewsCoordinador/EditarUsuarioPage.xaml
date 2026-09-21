@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Monitoreo_Invernadero_1.ViewsCoordinador.EditarUsuarioPage"
+             Title="Editar Usuario">
+    <ScrollView>
+        <VerticalStackLayout Padding="30">
+            <Grid RowDefinitions="*, *, *" RowSpacing="10">
+                <Grid Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="200">
+                    <Label Text=" Editar Usuario" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineHeight=".70" FontFamily="Oswald" TextColor="#2C2C2C"></Label>
+                </Grid>
+                <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*" RowSpacing="20" Grid.Row="1" Padding="10">
+
+                    <Grid Grid.Row="0" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Nombre: " FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Entry  x:Name="NombreEntry" Placeholder="Ingresa tu Nombre(s)"/>
+                        </Frame>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10" >
+                        <Label Grid.Row="0" Grid.Column="0" Text="Apellido Paterno: " FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Entry x:Name="P_ApellidoEntry" Placeholder="Ingresa tu Primer Apellido"/>
+                        </Frame>
+                    </Grid>
+
+                    <Grid Grid.Row="2" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Apellido Materno: " FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Entry x:Name="S_ApellidoEntry" Placeholder="Segundo Apellido"/>
+                        </Frame>
+                    </Grid>
+
+                    <Grid Grid.Row="3" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Selecciona el cargo: " FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Picker
+                                ItemsSource="{Binding Roles}"
+                                ItemDisplayBinding="{Binding Nombre}"
+                                x:Name="rolesPicker"/>
+                        </Frame>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2" WidthRequest="270" RowDefinitions="*,*">
+                    <Grid Grid.Row="0" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Button Text="Actualizar" x:Name="OnEditarUsuario" Clicked="OnEditarUsuario_Clicked" Grid.Row="0" Background="#2C2C2C"/>
+                    </Grid>
+                    <Grid RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10" Grid.Row="1">
+                        <Button Text="Volver al menu" x:Name="OnMenu" Clicked="OnMenu_Clicked" Grid.Row="1" Background="#2C2C2C"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+
+            <Label x:Name="MenssageLabel"
+               TextColor="Red"
+               />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

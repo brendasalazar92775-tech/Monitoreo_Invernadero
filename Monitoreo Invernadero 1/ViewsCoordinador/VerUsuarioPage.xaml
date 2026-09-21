@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Monitoreo_Invernadero_1.ViewsCoordinador.VerUsuarioPage"
+             Title="Ver Usuario"
+             NavigationPage.HasNavigationBar="False">
+    <VerticalStackLayout Padding="30">
+
+            <Grid RowDefinitions="*, *, *, *" RowSpacing="10">
+            <!-- TITULO Y USUARIO   -->
+            <Grid Grid.Row="0" RowDefinitions="*,*" RowSpacing="30">
+                <Grid Grid.Row="0">
+                    <Grid>
+                        <Label Text="Datos de Usuario" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineHeight=".70" FontFamily="Oswald" TextColor="#2C2C2C"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1" RowDefinitions="*,*" RowSpacing="-10">
+                    <Grid Grid.Row="0">
+                        <Label x:Name="NombreCEntry" Text="Brenda Salazar Mendiola" FontSize="25" FontAttributes="Bold" LineHeight=".70" FontFamily="Oswald" TextColor="#2C2C2C"/>
+                    </Grid>
+                    <Grid Grid.Row="1" ColumnDefinitions=".1*,*">
+                        <Label Text="Rol:" FontSize="20" LineHeight=".70" FontFamily="Oswald" TextColor="#2C2C2C" Grid.Column="0"/>
+                        <Label x:Name="rolesEntry" FontSize="20" LineHeight=".70" FontFamily="Oswald" TextColor="#2C2C2C" Grid.Column="1"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <!-- DATOS DE USUARIO -->
+            <Grid RowSpacing="20" Grid.Row="1" Padding="10">
+                <Frame Padding="20" HasShadow="True">
+                    <Grid RowDefinitions="*,*,*,*,*" RowSpacing="20">
+                        <Grid Grid.Row="0" RowDefinitions="*" ColumnDefinitions=".2*,*">
+                            <Grid Grid.Row="0" Grid.Column="0">
+                                <Image Source="flecha_derecha.png" WidthRequest="25"/>
+                            </Grid>
+                            <Grid Grid.Row="1" Grid.Column="1">
+                                <Grid RowDefinitions="*,*">
+                                    <Label Text="Nombre(s)" Grid.Row="0" FontSize="17" FontAttributes="Bold"/>
+                                    <Label x:Name="nombreLabel" Grid.Row="1" FontSize="16"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="1" RowDefinitions="*" ColumnDefinitions=".2*,*">
+                            <Grid Grid.Row="0" Grid.Column="0">
+                                <Image Source="flecha_derecha.png" WidthRequest="25"/>
+                            </Grid>
+                            <Grid Grid.Row="1" Grid.Column="1">
+                                <Grid RowDefinitions="*,*">
+                                    <Label Text="Primer Apellido:" Grid.Row="0" FontSize="17" FontAttributes="Bold"/>
+                                    <Label x:Name="p_apellioLabel" Grid.Row="1" FontSize="16"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="2" RowDefinitions="*" ColumnDefinitions=".2*,*">
+                            <Grid Grid.Row="0" Grid.Column="0">
+                                <Image Source="flecha_derecha.png" WidthRequest="25"/>
+                            </Grid>
+                            <Grid Grid.Row="1" Grid.Column="1">
+                                <Grid RowDefinitions="*,*">
+                                    <Label Text="Segundo Apellido:" Grid.Row="0" FontSize="17" FontAttributes="Bold"/>
+                                    <Label x:Name="s_apellioLabel" Grid.Row="1" FontSize="16"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Row="3" RowDefinitions="*" ColumnDefinitions=".2*,*">
+                            <Grid Grid.Row="0" Grid.Column="0">
+                                <Image Source="flecha_derecha.png" WidthRequest="25"/>
+                            </Grid>
+                            <Grid Grid.Row="1" Grid.Column="1">
+                                <Grid RowDefinitions="*,*">
+                                    <Label Text="Correo:" Grid.Row="0" FontSize="17" FontAttributes="Bold"/>
+                                    <Label x:Name="correoLabel" Grid.Row="1" FontSize="16"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        
+                        <Grid Grid.Row="4" RowDefinitions="*" ColumnDefinitions=".2*,*">
+                            <Grid Grid.Row="0" Grid.Column="0">
+                                <Image Source="flecha_derecha.png" WidthRequest="25"/>
+                            </Grid>
+                            <Grid Grid.Row="1" Grid.Column="1">
+                                <Grid RowDefinitions="*,*">
+                                    <Label Text="Numero:" Grid.Row="0" FontSize="17" FontAttributes="Bold"/>
+                                    <Label x:Name="numeroLabel" Grid.Row="1" FontSize="16"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Frame>
+            </Grid>
+            <!-- IMAGEN -->
+
+            <Grid Grid.Row="2" Padding="0">
+                <Image Source="usuario_fondo_2.png" Margin="160,-90,0,0" WidthRequest="150"/>
+            </Grid>
+
+            <!-- VOLVER -->
+            <Grid Grid.Row="3" WidthRequest="270" RowDefinitions="*,*" Margin="0,0,0,0">
+                <Grid RowDefinitions="*" ColumnDefinitions="*" RowSpacing="10" Grid.Row="1">
+                    <Button Text="Volver" x:Name="OnVolver" Clicked="OnVolver_Clicked" Grid.Row="1" Background="#2C2C2C"/>
+                </Grid>
+            </Grid>
+
+        </Grid>
+
+    </VerticalStackLayout>
+</ContentPage>

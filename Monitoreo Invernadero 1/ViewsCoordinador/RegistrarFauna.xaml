@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Monitoreo_Invernadero_1.ViewsCoordinador.RegistrarFauna"
+             Title="RegistrarFauna"
+             NavigationPage.HasNavigationBar="False">
+    <ScrollView>
+        <VerticalStackLayout Padding="30">
+            <Grid RowDefinitions="*, *, *" RowSpacing="10">
+                <Grid Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="200">
+                    <Label Text="Registrar Nueva Fauna" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineHeight=".70" FontFamily="Oswald" TextColor="#2C2C2C"></Label>
+                </Grid>
+                <Grid RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="*" RowSpacing="20" Grid.Row="1" Padding="10">
+                    <!-- INGRESAR NOMBRE -->
+                    <Grid Grid.Row="0" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Nombre: " FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Entry  x:Name="NombreEntry" Placeholder="Ingresa su Nombre Comun"/>
+                        </Frame>
+                    </Grid>
+                    <!-- INGRESAR NOMBRE CIENTIFICO -->
+                    <Grid Grid.Row="1" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10" >
+                        <Label Grid.Row="0" Grid.Column="0" Text="Nombre Cientifico" FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Entry x:Name="NombreCientificoEntry" Placeholder="Ingresa su Nombre Cientifico"/>
+                        </Frame>
+                    </Grid>
+                    <!-- INGRESAR Tipo de Insecto -->
+                    <Grid Grid.Row="2" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Selecciona el Tipo de Fauna: " FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Picker
+                         ItemsSource="{Binding TipoFauna}"
+                         ItemDisplayBinding="{Binding Nombre}"
+                         x:Name="TipoPicker"/>
+                        </Frame>
+                    </Grid>
+
+                    <!-- INGRESAR DESCRIPCION -->
+                    <Grid Grid.Row="3" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Descripcion" FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Editor x:Name="DescripcionEntry" Placeholder="Descripcion" HeightRequest="90"/>
+                        </Frame>
+                    </Grid>
+
+                    <!-- INGRESAR Metodo de control -->
+                    <Grid Grid.Row="4" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Metodo de Control" FontFamily="Roboto" FontSize="18"/>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="15,0,15,-10" Margin="0,0,0,0" HasShadow="True">
+                            <Editor x:Name="MetodoEntry" Placeholder="Metodo de Control" HeightRequest="90"/>
+                        </Frame>
+                    </Grid>
+
+
+                    <Grid Grid.Row="5" WidthRequest="270" RowDefinitions="*,*" Margin="20">
+                        <Grid Grid.Row="0" Grid.Column="0" RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10">
+                            <Button Text="Registrar" x:Name="OnRegister" Clicked="OnRegister_Clicked" Grid.Row="0" Background="#2C2C2C"/>
+                        </Grid>
+                        <Grid RowDefinitions="*,*" ColumnDefinitions="*" RowSpacing="10" Grid.Row="1">
+                            <Button Text="Volver al menu" x:Name="OnVolver" Clicked="OnVolver_Clicked" Grid.Row="1" Background="#2C2C2C"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

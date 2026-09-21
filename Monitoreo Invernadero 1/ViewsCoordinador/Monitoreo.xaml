@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Monitoreo_Invernadero_1.ViewsCoordinador.Monitoreo"
+             Title="Monitoreo">
+    <ContentPage Title="Temperatura y Humedad">
+    <ScrollView>
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="0" Padding="20">
+
+            <Frame Grid.Row="0" BackgroundColor="Transparent" BorderColor="Transparent" Padding="0,40,0,30" HorizontalOptions="Center">
+                <VerticalStackLayout Spacing="15" HorizontalOptions="Center">
+                    <Label Text="🌡️" FontSize="48" HorizontalOptions="Center" TranslationY="5"/>
+                    <Label Text="Temperatura y Humedad" FontSize="28" FontAttributes="Bold" TextTransform="Uppercase" HorizontalTextAlignment="Center" FontFamily="Oswald" TextColor="#2C2C2C"/>
+                    <Label Text="Monitoreo dentro del Invernadero en tiempo real" FontSize="14" TextColor="#666" HorizontalTextAlignment="Center" Margin="0,-10,0,0" WidthRequest="200"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame Grid.Row="1" BackgroundColor="White" BorderColor="#E0E0E0" CornerRadius="20" Padding="25" Margin="0,0,0,15" HasShadow="True">
+                <Grid ColumnDefinitions=".8*,*,Auto" ColumnSpacing="15" VerticalOptions="Center">
+                    <Frame Grid.Column="0" BorderColor="Transparent" BackgroundColor="#C7E9FF" CornerRadius="15" Padding="15" WidthRequest="90" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Image Source="humedad.png"/>
+                    </Frame>
+                    <VerticalStackLayout Grid.Column="1" Spacing="5" VerticalOptions="Center">
+                        <Label Text="HUMEDAD" FontSize="12" FontAttributes="Bold" TextColor="#666" TextTransform="Uppercase"/>
+                        <Label Text="{Binding Humedad, StringFormat='{0:F1}%'}" FontSize="32" FontAttributes="Bold" TextColor="#2196F3"/>
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="5">
+                            <Label Grid.Column="1" Text="Nivel óptimo" FontSize="11" TextColor="#4CAF50"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Grid>
+            </Frame>
+
+            <Frame Grid.Row="2" BackgroundColor="White" BorderColor="#E0E0E0" CornerRadius="20" Padding="25" Margin="0,0,0,20" HasShadow="True">
+                <Grid ColumnDefinitions=".8*,*,Auto" ColumnSpacing="15" VerticalOptions="Center">
+                    <Frame Grid.Column="0" BackgroundColor="#FFEBEE" BorderColor="Transparent" CornerRadius="15" Padding="15" WidthRequest="90" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Image Source="temperatura.png"/>
+                    </Frame>
+                    <VerticalStackLayout Grid.Column="1" Spacing="5" VerticalOptions="Center">
+                        <Label Text="TEMPERATURA" FontSize="12" FontAttributes="Bold" TextColor="#666" TextTransform="Uppercase"/>
+                        <Label Text="{Binding Temperatura, StringFormat='{0:F1}°C'}" FontSize="32" FontAttributes="Bold" TextColor="#F44336"/>
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="5">
+                            <Label Grid.Column="1" Text="Confortable" FontSize="11" TextColor="#4CAF50"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Grid>
+            </Frame>
+        </Grid>
+    </ScrollView>
+</ContentPage>
+
+
+    <ContentPage Title="Luces">
+    <ScrollView>
+        <Grid RowDefinitions="Auto,Auto,Auto" RowSpacing="0" Padding="20">
+
+            <Frame Grid.Row="0" BackgroundColor="Transparent" BorderColor="Transparent" Padding="0,40,0,20" HorizontalOptions="Center">
+                <VerticalStackLayout Spacing="15" HorizontalOptions="Center" WidthRequest="250">
+                    <Image Source="iluminacion.png" WidthRequest="100"/>
+                    <Label Text="Control de Luces" FontSize="28" FontAttributes="Bold" TextTransform="Uppercase" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="Oswald" TextColor="#2C2C2C"/>
+                    <Label Text="Gestion de la iluminación dentro del Invernadero" FontSize="14" TextColor="#666" HorizontalTextAlignment="Center" Margin="0,-10,0,0"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame Grid.Row="1" BackgroundColor="White" BorderColor="#E0E0E0" CornerRadius="20" Padding="25" Margin="0,0,0,20" HasShadow="True">
+                <VerticalStackLayout VerticalOptions="Center">
+                    <Grid ColumnDefinitions="*,*" Padding="0">
+                        <Grid Grid.Column="0" RowDefinitions="*,*">
+                            <Label Grid.Row="0" Text="Estado de Luces" FontSize="16" FontAttributes="Bold" TextColor="#2C2C2C"/>
+                            <Label Grid.Row="1" x:Name="EstadoLuces" FontSize="26" FontAttributes="Bold" TextColor="#2C2C2C"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Switch x:Name="LedSwitch" Toggled="LedSwitch_Toggled" OnColor="#4CAF50" ThumbColor="Black" HorizontalOptions="Center" Scale="1.5"/>
+                        </Grid>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame Grid.Row="2" BackgroundColor="White" BorderColor="#E0E0E0" CornerRadius="15" Padding="20" HasShadow="True">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="📊 Información de Uso" FontSize="16" FontAttributes="Bold" TextColor="#2C2C2C"/>
+
+                    <Frame BackgroundColor="#FFF3E0" BorderColor="Transparent" CornerRadius="10" Padding="15,10">
+                        <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                            <Label Text="🌱" FontSize="16" VerticalOptions="Center"/>
+                            <Label Text="Apaga las luces cuando no las necesites" FontSize="12" TextColor="#E65100" VerticalOptions="Center" LineBreakMode="WordWrap"/>
+                        </HorizontalStackLayout>
+                    </Frame>
+
+                    <Frame BackgroundColor="#9DD0EB" BorderColor="Transparent" CornerRadius="10" Padding="15,10">
+                        <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                            <Label Text="🌱" FontSize="16" VerticalOptions="Center"/>
+                            <Label Text="ISO 14001:2015: Gestion Ambiental" FontSize="12" TextColor="Black" VerticalOptions="Center" LineBreakMode="WordWrap"/>
+                        </HorizontalStackLayout>
+                    </Frame>
+                </VerticalStackLayout>
+            </Frame>
+        </Grid>
+    </ScrollView>
+</ContentPage>
+
+</TabbedPage>

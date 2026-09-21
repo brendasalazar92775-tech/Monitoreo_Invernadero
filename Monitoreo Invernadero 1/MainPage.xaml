@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Monitoreo_Invernadero_1.MainPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="40,0"
+            Spacing="25"
+           >
+
+            <Grid RowDefinitions=".6*,.6*" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="150" Margin="0,50,0,0">
+                <Image
+                Source="icono.png"
+                HeightRequest="140"
+                Aspect="AspectFit"
+                 Grid.Row="0"
+                />
+                <Label Text="Garden Engineering"
+                       FontSize="30"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       LineHeight=".60"
+                       FontFamily="Oswald"
+                       Grid.Row="1"
+                       />
+            </Grid>
+            
+            
+            <Label Text="Correo"
+               FontSize="19"
+               TextColor="Black" />
+            <Frame Padding="15,0,15,-19" Margin="0,-16,0,0" >
+                <Entry x:Name="EmailEntry"
+                   Placeholder="Correo Electrónico"
+                   Keyboard="Email"
+                   BackgroundColor="White"
+                   HeightRequest="45"
+                   Margin="0,0,0,10"
+                   FontSize="17"
+                   />
+            </Frame>
+
+
+            <Label Text="Contraseña"
+               FontSize="19"
+               TextColor="Black" />
+            <Frame Padding="15,0,15,-19" Margin="0,-16,0,0" >
+            <Entry x:Name="PasswordEntry"
+                   Placeholder="Contraseña"
+                   IsPassword="false"
+                   HeightRequest="45"
+                    Margin="0,0,0,10"
+                    FontSize="17"
+                   />
+            </Frame>
+            <Button Text="Ingresar"
+                    x:Name="OnLogin"
+                    Clicked="OnLogin_Clicked"
+                    FontSize="19"
+                    BackgroundColor="#2C2C2C"
+                    />
+
+            <Grid ColumnDefinitions="*,*" RowDefinitions="*" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="180" Margin="0,70,0,0">
+                <Grid Grid.Column="0" Grid.Row="0">
+                    <Image Source="logo_upt.png"/>
+                </Grid>
+                <Grid Grid.Column="1" Grid.Row="0">
+                    <Label Text="Universidad Politecnica de Tecamac"
+                       FontSize="20"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       LineHeight=".80"
+                       FontFamily="Roboto"
+                       Grid.Row="1"
+                       TextColor="Grey"
+                   />
+                </Grid>
+
+            </Grid>
+
+
+
+
+
+            <Label x:Name="MessageLabel"
+                   TextColor="Red"
+                   />
+            
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
