@@ -6,4 +6,4 @@ La aplicación fue desarrollada utilizando C# y .NET MAUI, integrando Firebase p
 
 El proyecto tiene como finalidad proporcionar una herramienta digital que facilite el monitoreo, control y gestión de las condiciones del invernadero.
 
-![Inicio de sesión](Capturas/login.png)
+![Inicio de sesión](Capturas/Login.png)
